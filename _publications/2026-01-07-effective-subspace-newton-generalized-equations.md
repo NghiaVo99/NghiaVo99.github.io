@@ -5,5 +5,5 @@ category: preprints
 permalink: /publication/2026-effective-subspace-newton-generalized-equations
 date: 2026-01-07
 venue: "Preprint"
-citation: "T. A. Nghia Tran, V. V. H. Khoa, and Nghia Van Vo. &quot;An effective subspace Newton method for generalized equations.&quot; Preprint, 2026."
+citation: "Tran T. A. Nghia, V. V. H. Khoa, and Nghia Van Vo. &quot;An effective subspace Newton method for generalized equations.&quot; Preprint, 2026."
 ---

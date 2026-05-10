@@ -1,7 +1,7 @@
 ---
 title: "Isolated calmness of regularized linear inverse problems"
 collection: publications
-category: preprints
+category: hidden
 permalink: /publication/2026-isolated-calmness-regularized-linear-inverse-problems
 date: 2026-01-09
 venue: "Preprint"
