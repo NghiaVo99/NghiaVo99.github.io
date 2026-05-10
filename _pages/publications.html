@@ -1,0 +1,57 @@
+---
+layout: archive
+title: "Publications"
+permalink: /publications/
+author_profile: true
+---
+
+{% include base_path %}
+
+<div class="publications-intro">
+  <p>
+    My publications span optimization, inverse problems, nonsmooth analysis, PDE-constrained optimization, and machine learning.
+    You can also find my articles on
+    <a href="{{ site.author.googlescholar }}">Google Scholar</a>.
+  </p>
+</div>
+
+{% assign preprints = site.publications | where: "category", "preprints" | sort: "date" | reverse %}
+{% assign articles = site.publications | where: "category", "articles" | sort: "date" | reverse %}
+
+<section class="publication-section">
+  <h2>Preprints and Submitted Manuscripts</h2>
+  <div class="publication-list">
+    {% for post in preprints %}
+      <article class="publication-card">
+        <div class="publication-card__year">{{ post.date | date: "%Y" }}</div>
+        <div class="publication-card__body">
+          <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+          <p class="publication-card__venue">{{ post.venue }}</p>
+          <p class="publication-card__citation">{{ post.citation }}</p>
+          {% if post.paperurl %}
+            <a class="publication-card__link" href="{{ post.paperurl }}">View paper</a>
+          {% endif %}
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="publication-section">
+  <h2>Journal Articles</h2>
+  <div class="publication-list">
+    {% for post in articles %}
+      <article class="publication-card">
+        <div class="publication-card__year">{{ post.date | date: "%Y" }}</div>
+        <div class="publication-card__body">
+          <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+          <p class="publication-card__venue">{{ post.venue }}</p>
+          <p class="publication-card__citation">{{ post.citation }}</p>
+          {% if post.paperurl %}
+            <a class="publication-card__link" href="{{ post.paperurl }}">View paper</a>
+          {% endif %}
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+</section>
