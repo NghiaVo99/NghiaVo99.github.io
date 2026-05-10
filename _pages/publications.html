@@ -23,13 +23,11 @@ author_profile: true
   <div class="publication-list">
     {% for post in preprints %}
       <article class="publication-card">
-        <div class="publication-card__year">{{ post.date | date: "%Y" }}</div>
-        <div class="publication-card__body">
-          <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-          <p class="publication-card__venue">{{ post.venue }}</p>
-          <p class="publication-card__citation">{{ post.citation }}</p>
+        <p class="publication-card__citation">{{ post.citation }}</p>
+        <div class="publication-card__actions">
+          <a class="publication-card__link" href="{{ post.url | relative_url }}">Details</a>
           {% if post.paperurl %}
-            <a class="publication-card__link" href="{{ post.paperurl }}">View paper</a>
+            <a class="publication-card__link" href="{{ post.paperurl }}">Paper</a>
           {% endif %}
         </div>
       </article>
@@ -42,13 +40,11 @@ author_profile: true
   <div class="publication-list">
     {% for post in articles %}
       <article class="publication-card">
-        <div class="publication-card__year">{{ post.date | date: "%Y" }}</div>
-        <div class="publication-card__body">
-          <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-          <p class="publication-card__venue">{{ post.venue }}</p>
-          <p class="publication-card__citation">{{ post.citation }}</p>
+        <p class="publication-card__citation">{{ post.citation }}</p>
+        <div class="publication-card__actions">
+          <a class="publication-card__link" href="{{ post.url | relative_url }}">Details</a>
           {% if post.paperurl %}
-            <a class="publication-card__link" href="{{ post.paperurl }}">View paper</a>
+            <a class="publication-card__link" href="{{ post.paperurl }}">Paper</a>
           {% endif %}
         </div>
       </article>

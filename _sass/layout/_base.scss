@@ -353,13 +353,20 @@ b, i, strong, em, blockquote, p, q, span, figure, img, h1, h2, header, input, a,
    Hide the following elements on print
    ========================================================================== */
 
-   @media print {
-    .masthead,
-    .toc,
-    .page__share,
-    .page__related,
-    .ads,
-    .page__footer {
-      display: none;
-    }
+@media print {
+  .masthead,
+  .toc,
+  .page__share,
+  .page__related,
+  .ads,
+  .page__footer {
+    display: none;
   }
+}
+
+html[data-theme="dark"],
+html[data-theme="dark"] body,
+html[data-theme="dark"] .masthead,
+html[data-theme="dark"] .page__footer {
+  background-color: #000 !important;
+}
