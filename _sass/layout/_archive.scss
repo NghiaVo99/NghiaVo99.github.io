@@ -107,12 +107,12 @@
   }
 }
 
-.publication-list {
+.pub-list {
   display: grid;
   gap: 1rem;
 }
 
-.publication-card {
+.pub-entry {
   padding: 1rem 1.1rem;
   border: 1px solid var(--global-border-color);
   border-left: 4px solid var(--global-link-color);
@@ -127,20 +127,20 @@
   }
 }
 
-.publication-card__citation {
+.pub-entry__citation {
   margin: 0;
   font-size: $type-size-5;
   line-height: 1.5;
 }
 
-.publication-card__actions {
+.pub-entry__actions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
   margin-top: 0.6rem;
 }
 
-.publication-card__link {
+.pub-entry__link {
   font-family: $sans-serif;
   font-size: $type-size-6;
   font-weight: 700;

@@ -20,14 +20,14 @@ author_profile: true
 
 <section class="publication-section">
   <h2>Preprints and Submitted Manuscripts</h2>
-  <div class="publication-list">
+  <div class="pub-list">
     {% for post in preprints %}
-      <article class="publication-card">
-        <p class="publication-card__citation">{{ post.citation }}</p>
-        <div class="publication-card__actions">
-          <a class="publication-card__link" href="{{ post.url | relative_url }}">Details</a>
+      <article class="pub-entry">
+        <p class="pub-entry__citation">{{ post.citation }}</p>
+        <div class="pub-entry__actions">
+          <a class="pub-entry__link" href="{{ post.url | relative_url }}">Details</a>
           {% if post.paperurl %}
-            <a class="publication-card__link" href="{{ post.paperurl }}">Paper</a>
+            <a class="pub-entry__link" href="{{ post.paperurl }}">Paper</a>
           {% endif %}
         </div>
       </article>
@@ -37,14 +37,14 @@ author_profile: true
 
 <section class="publication-section">
   <h2>Journal Articles</h2>
-  <div class="publication-list">
+  <div class="pub-list">
     {% for post in articles %}
-      <article class="publication-card">
-        <p class="publication-card__citation">{{ post.citation }}</p>
-        <div class="publication-card__actions">
-          <a class="publication-card__link" href="{{ post.url | relative_url }}">Details</a>
+      <article class="pub-entry">
+        <p class="pub-entry__citation">{{ post.citation }}</p>
+        <div class="pub-entry__actions">
+          <a class="pub-entry__link" href="{{ post.url | relative_url }}">Details</a>
           {% if post.paperurl %}
-            <a class="publication-card__link" href="{{ post.paperurl }}">Paper</a>
+            <a class="pub-entry__link" href="{{ post.paperurl }}">Paper</a>
           {% endif %}
         </div>
       </article>
