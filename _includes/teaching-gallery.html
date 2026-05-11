@@ -21,8 +21,17 @@
             {% assign teaching_photo_index = teaching_photo_index | plus: 1 %}
             {% assign photo_name = file.basename | replace: '-', ' ' | replace: '_', ' ' %}
             <figure class="teaching-moments__item" style="--photo-index: {{ teaching_photo_index }}">
-              <img src="{{ file.path | relative_url }}" alt="{{ photo_name | capitalize }}" loading="lazy">
+              <a class="teaching-moments__thumb" href="#teaching-photo-{{ teaching_photo_index }}" aria-label="Open larger view of {{ photo_name | capitalize }}">
+                <img src="{{ file.path | relative_url }}" alt="{{ photo_name | capitalize }}" loading="lazy">
+              </a>
             </figure>
+            <div class="teaching-lightbox" id="teaching-photo-{{ teaching_photo_index }}" aria-label="Larger classroom photo">
+              <a class="teaching-lightbox__backdrop" href="#classroom-moments" aria-label="Close larger photo"></a>
+              <figure class="teaching-lightbox__figure">
+                <a class="teaching-lightbox__close" href="#classroom-moments" aria-label="Close larger photo">&times;</a>
+                <img src="{{ file.path | relative_url }}" alt="{{ photo_name | capitalize }}">
+              </figure>
+            </div>
           {% endif %}
         {% endif %}
       {% endfor %}
