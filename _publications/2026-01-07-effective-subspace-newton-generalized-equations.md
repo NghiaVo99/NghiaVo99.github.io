@@ -1,7 +1,7 @@
 ---
 title: "An effective subspace Newton method for generalized equations"
 collection: publications
-category: preprints
+category: hidden
 permalink: /publication/2026-effective-subspace-newton-generalized-equations
 date: 2026-01-07
 venue: "Preprint"
