@@ -1,0 +1,30 @@
+{% assign teaching_photo_count = 0 %}
+{% for file in site.static_files %}
+  {% if file.path contains '/images/teaching/' %}
+    {% assign ext = file.extname | downcase %}
+    {% if ext == '.jpg' or ext == '.jpeg' or ext == '.png' or ext == '.webp' %}
+      {% assign teaching_photo_count = teaching_photo_count | plus: 1 %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+{% if teaching_photo_count > 0 %}
+  <section class="teaching-moments" aria-label="Classroom photos">
+    <h2>Classroom Moments</h2>
+    <div class="teaching-moments__grid">
+      {% assign teaching_photo_index = 0 %}
+      {% for file in site.static_files %}
+        {% if file.path contains '/images/teaching/' %}
+          {% assign ext = file.extname | downcase %}
+          {% if ext == '.jpg' or ext == '.jpeg' or ext == '.png' or ext == '.webp' %}
+            {% assign teaching_photo_index = teaching_photo_index | plus: 1 %}
+            {% assign photo_name = file.basename | replace: '-', ' ' | replace: '_', ' ' %}
+            <figure class="teaching-moments__item" style="--photo-index: {{ teaching_photo_index }}">
+              <img src="{{ file.path | relative_url }}" alt="{{ photo_name | capitalize }}" loading="lazy">
+            </figure>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+{% endif %}

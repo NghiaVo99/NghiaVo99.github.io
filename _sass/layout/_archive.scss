@@ -145,6 +145,74 @@
   font-weight: 700;
 }
 
+.teaching-moments {
+  margin: 0 0 2rem;
+
+  h2 {
+    margin-bottom: 1rem;
+    padding-bottom: 0.45rem;
+    border-bottom: 1px solid var(--global-border-color);
+    font-size: $type-size-4;
+  }
+}
+
+.teaching-moments__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: 0.85rem;
+}
+
+.teaching-moments__item {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--global-border-color);
+  border-radius: 8px;
+  background: var(--global-card-bg-color);
+  opacity: 0;
+  transform: translateY(0.75rem);
+  animation: teaching-photo-reveal 0.55s ease forwards;
+  animation-delay: calc(var(--photo-index, 1) * 80ms);
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.35s ease, filter 0.35s ease;
+  }
+
+  &:hover img {
+    transform: scale(1.045);
+    filter: saturate(1.06) contrast(1.04);
+  }
+}
+
+@keyframes teaching-photo-reveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .teaching-moments__item {
+    opacity: 1;
+    transform: none;
+    animation: none;
+
+    img {
+      transition: none;
+    }
+
+    &:hover img {
+      transform: none;
+      filter: none;
+    }
+  }
+}
+
 
 /*
    List view
