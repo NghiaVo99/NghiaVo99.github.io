@@ -146,6 +146,8 @@
 }
 
 .teaching-moments {
+  position: relative;
+  z-index: 1;
   margin: 0 0 2rem;
 
   h2 {
@@ -160,6 +162,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
   gap: 0.85rem;
+  overflow: visible;
 }
 
 .teaching-moments__item {
@@ -170,10 +173,13 @@
   border: 1px solid var(--global-border-color);
   border-radius: 8px;
   background: var(--global-card-bg-color);
+  box-shadow: none;
+  cursor: zoom-in;
   opacity: 0;
   transform: translateY(0.75rem);
   animation: teaching-photo-reveal 0.55s ease forwards;
   animation-delay: calc(var(--photo-index, 1) * 80ms);
+  transition: border-color 0.2s ease, box-shadow 0.25s ease, transform 0.25s ease;
 
   img {
     display: block;
@@ -183,9 +189,28 @@
     transition: transform 0.35s ease, filter 0.35s ease;
   }
 
+  &:hover {
+    z-index: 10;
+    border-color: var(--global-link-color);
+    box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.35);
+    transform: translateY(0) scale(1.38);
+  }
+
   &:hover img {
-    transform: scale(1.045);
+    transform: scale(1.025);
     filter: saturate(1.06) contrast(1.04);
+  }
+}
+
+@include breakpoint($large) {
+  .teaching-moments__item:hover {
+    transform: translateY(0) scale(1.55);
+  }
+}
+
+@include breakpoint(max-width $small) {
+  .teaching-moments__item:hover {
+    transform: translateY(0) scale(1.04);
   }
 }
 
@@ -204,6 +229,11 @@
 
     img {
       transition: none;
+    }
+
+    &:hover {
+      box-shadow: none;
+      transform: none;
     }
 
     &:hover img {

@@ -1,5 +1,6 @@
 {% assign teaching_photo_count = 0 %}
-{% for file in site.static_files %}
+{% assign teaching_files = site.static_files | sort: "path" %}
+{% for file in teaching_files %}
   {% if file.path contains '/images/teaching/' %}
     {% assign ext = file.extname | downcase %}
     {% if ext == '.jpg' or ext == '.jpeg' or ext == '.png' or ext == '.webp' %}
@@ -13,7 +14,7 @@
     <h2>Classroom Moments</h2>
     <div class="teaching-moments__grid">
       {% assign teaching_photo_index = 0 %}
-      {% for file in site.static_files %}
+      {% for file in teaching_files %}
         {% if file.path contains '/images/teaching/' %}
           {% assign ext = file.extname | downcase %}
           {% if ext == '.jpg' or ext == '.jpeg' or ext == '.png' or ext == '.webp' %}
