@@ -29,7 +29,9 @@ Machine Learning; Deep Learning; Advanced Convex Optimization; Nonlinear Program
 Publications
 ======
   <ul>{% for post in site.publications reversed %}
-    {% include archive-single-cv.html %}
+    {% unless post.category == "hidden" %}
+      {% include archive-single-cv.html %}
+    {% endunless %}
   {% endfor %}</ul>
 
 Projects
