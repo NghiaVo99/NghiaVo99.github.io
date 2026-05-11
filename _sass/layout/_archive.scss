@@ -187,7 +187,7 @@
   box-shadow: none;
   cursor: zoom-in;
   text-decoration: none;
-  transition: border-color 0.2s ease, box-shadow 0.25s ease, transform 0.25s ease, filter 0.25s ease;
+  transition: border-color 0.2s ease, box-shadow 0.28s ease, transform 0.28s ease, filter 0.28s ease;
 
   img {
     display: block;
@@ -200,19 +200,19 @@
   &:hover {
     border-color: var(--global-link-color);
     box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.35);
-    transform: scale(1.08);
+    transform: scale(1.13);
     filter: saturate(1.04);
   }
 
   &:hover img {
-    transform: scale(1.08);
+    transform: scale(1.1);
     filter: saturate(1.06) contrast(1.04);
   }
 }
 
 @include breakpoint($large) {
   .teaching-moments__thumb:hover {
-    transform: scale(1.12);
+    transform: scale(1.18);
   }
 }
 
@@ -233,7 +233,7 @@
   pointer-events: none;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.2s ease, visibility 0.2s ease;
+  transition: opacity 0.32s ease, visibility 0.32s ease;
 
   &:target {
     pointer-events: auto;
@@ -260,8 +260,10 @@
   border-radius: 8px;
   background: #000;
   box-shadow: 0 1.25rem 4rem rgba(0, 0, 0, 0.5);
-  transform: scale(0.94);
-  transition: transform 0.2s ease;
+  opacity: 0;
+  transform: translateY(0.8rem) scale(0.68);
+  transform-origin: center center;
+  transition: opacity 0.32s ease, transform 0.36s cubic-bezier(0.2, 0.8, 0.2, 1);
 
   img {
     display: block;
@@ -272,7 +274,8 @@
 }
 
 .teaching-lightbox:target .teaching-lightbox__figure {
-  transform: scale(1);
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 
 .teaching-lightbox__close {
