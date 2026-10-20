@@ -1,0 +1,41 @@
+{% comment %}
+  Left rail on inner pages. The profile card shows first; on pages with a
+  table of contents or a side panel, it fades out on scroll and the panel
+  ("On this page", filters, download) fades in in the same place.
+{% endcomment %}
+{% assign has_context = false %}
+{% if page.toc or page.aside %}{% assign has_context = true %}{% endif %}
+<aside class="rail{% unless has_context %} rail--profile-only{% endunless %}" data-rail data-state="profile" aria-label="About Nghia Van Vo{% if has_context %} and page navigation{% endif %}">
+  <div class="rail__sticky">
+    <div class="rail__panel rail__profile" data-rail-profile>
+      <a class="profile__photo" href="{{ '/' | relative_url }}" tabindex="-1" aria-hidden="true">
+        <img src="{{ '/images/profile.png' | relative_url }}" alt="" width="600" height="600">
+      </a>
+      <p class="profile__name"><a href="{{ '/' | relative_url }}">Nghia Van Vo</a></p>
+      <p class="profile__bio">{{ site.author.bio }}</p>
+      <ul class="profile__links">
+        <li><i class="fa-solid fa-fw fa-location-dot" aria-hidden="true"></i><span>{{ site.author.location }}</span></li>
+        <li><i class="fa-solid fa-fw fa-building-columns" aria-hidden="true"></i><span>{{ site.author.employer }}</span></li>
+        <li><a href="mailto:{{ site.author.email }}"><i class="fa-solid fa-fw fa-envelope" aria-hidden="true"></i><span>Email</span></a></li>
+        <li><a href="{{ site.author.googlescholar }}"><i class="ai ai-fw ai-google-scholar" aria-hidden="true"></i><span>Google Scholar</span></a></li>
+        <li><a href="https://github.com/{{ site.author.github }}"><i class="fa-brands fa-fw fa-github" aria-hidden="true"></i><span>GitHub</span></a></li>
+        <li><a href="https://www.linkedin.com/in/{{ site.author.linkedin }}"><i class="fa-brands fa-fw fa-linkedin" aria-hidden="true"></i><span>LinkedIn</span></a></li>
+        <li><a href="{{ '/files/Nghia_Van_Vo_CV.pdf' | relative_url }}"><i class="fa-solid fa-fw fa-file-lines" aria-hidden="true"></i><span>CV (PDF)</span></a></li>
+      </ul>
+    </div>
+    {% if has_context %}
+    <div class="rail__panel rail__context" data-rail-context>
+      {% if page.aside %}{% include {{ page.aside }} %}{% endif %}
+      {% if page.toc %}
+      <nav class="toc" aria-label="On this page">
+        <p class="toc__label">On this page</p>
+        <ol>
+          {% for item in page.toc %}<li><a href="#{{ item.id }}">{{ item.title }}</a></li>{% endfor %}
+        </ol>
+      </nav>
+      {% endif %}
+      <p class="rail__back"><a href="#main" data-rail-top>Back to top</a></p>
+    </div>
+    {% endif %}
+  </div>
+</aside>

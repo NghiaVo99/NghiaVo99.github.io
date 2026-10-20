@@ -1,53 +1,44 @@
 ---
-layout: archive
 title: "Publications"
 permalink: /publications/
-author_profile: true
+no_prose: true
+aside: aside-pubs.html
+aside_label: "Filter and summary"
+lede: "Papers in nonsmooth optimization, variational analysis, and inverse problems, with applications to PDE-constrained optimization and machine learning. Numbers follow my CV."
 ---
+{% assign pubs = site.publications | where_exp: "p", "p.cv_order" | sort: "cv_order" %}
+{% assign groups = "articles|Journal articles,submitted|Submitted,preprints|Preprints" | split: "," %}
 
-{% include base_path %}
+<div class="prose">
+  {% for g in groups %}
+    {% assign parts = g | split: "|" %}
+    {% assign items = pubs | where: "category", parts[0] %}
+    {% if items.size > 0 %}
+    <section class="pub-group" data-group>
+      <h2>{{ parts[1] }}</h2>
+      <ol class="pub-list">
+        {% for post in items %}{% include nv-pub.html pub=post num=post.cv_order summary=true %}{% endfor %}
+      </ol>
+    </section>
+    {% endif %}
+  {% endfor %}
 
-<div class="publications-intro">
-  <p>
-    My publications span optimization, inverse problems, nonsmooth analysis, PDE-constrained optimization, and machine learning.
-    You can also find my articles on
-    <a href="{{ site.author.googlescholar }}">Google Scholar</a>.
-  </p>
+  <p class="meta" style="margin-top:2.5rem">Manuscripts without a public version are available on request.</p>
 </div>
 
-{% assign preprints = site.publications | where: "category", "preprints" | sort: "date" | reverse %}
-{% assign articles = site.publications | where: "category", "articles" | sort: "date" | reverse %}
-
-<section class="publication-section">
-  <h2>Preprints and Submitted Manuscripts</h2>
-  <div class="pub-list">
-    {% for post in preprints %}
-      <article class="pub-entry">
-        <p class="pub-entry__citation">{{ post.citation }}</p>
-        <div class="pub-entry__actions">
-          <a class="pub-entry__link" href="{{ post.url | relative_url }}">Details</a>
-          {% if post.paperurl %}
-            <a class="pub-entry__link" href="{{ post.paperurl }}">Paper</a>
-          {% endif %}
-        </div>
-      </article>
-    {% endfor %}
-  </div>
-</section>
-
-<section class="publication-section">
-  <h2>Journal Articles</h2>
-  <div class="pub-list">
-    {% for post in articles %}
-      <article class="pub-entry">
-        <p class="pub-entry__citation">{{ post.citation }}</p>
-        <div class="pub-entry__actions">
-          <a class="pub-entry__link" href="{{ post.url | relative_url }}">Details</a>
-          {% if post.paperurl %}
-            <a class="pub-entry__link" href="{{ post.paperurl }}">Paper</a>
-          {% endif %}
-        </div>
-      </article>
-    {% endfor %}
-  </div>
-</section>
+<script>
+  (function () {
+    var bar = document.querySelector('.filter');
+    if (!bar) return;
+    bar.hidden = false;
+    var buttons = bar.querySelectorAll('button');
+    var items = document.querySelectorAll('.pub[data-theme-tag]');
+    var groups = document.querySelectorAll('[data-group]');
+    function apply(tag) {
+      buttons.forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-filter') === tag ? 'true' : 'false'); });
+      items.forEach(function (li) { li.hidden = !(tag === 'all' || li.getAttribute('data-theme-tag') === tag); });
+      groups.forEach(function (g) { g.hidden = g.querySelectorAll('.pub:not([hidden])').length === 0; });
+    }
+    buttons.forEach(function (b) { b.addEventListener('click', function () { apply(b.getAttribute('data-filter')); }); });
+  })();
+</script>

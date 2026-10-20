@@ -1,0 +1,17 @@
+{% assign pubs = site.publications | where_exp: "p", "p.cv_order" %}
+{% assign n_art = pubs | where: "category", "articles" %}
+{% assign n_sub = pubs | where: "category", "submitted" %}
+{% assign n_pre = pubs | where: "category", "preprints" %}
+<div class="filter" role="group" aria-label="Filter by research direction" hidden>
+  <p class="filter__label">Filter by direction</p>
+  <button type="button" data-filter="all" aria-pressed="true">All papers</button>
+  {% for d in site.data.directions %}<button type="button" data-filter="{{ d.id }}" aria-pressed="false">{{ d.short }}</button>{% endfor %}
+  <button type="button" data-filter="pde" aria-pressed="false">p-Laplace equations</button>
+</div>
+<div class="aside--wide-only">
+  <p class="aside__label">At a glance</p>
+  <p class="aside__stats">{{ n_art.size }} journal articles<br>{{ n_sub.size }} submitted<br>{{ n_pre.size }} preprints</p>
+</div>
+<div class="aside--wide-only">
+  <a class="btn" href="{{ site.author.googlescholar }}">Google Scholar</a>
+</div>

@@ -1,0 +1,8 @@
+{% comment %}Action links for one publication. Pass pub=post (or page); show_details=true adds a link to the paper's page.{% endcomment %}
+{% assign p = include.pub %}
+<div class="pub-entry__actions">
+  {% if include.show_details %}<a class="pub-entry__link" href="{{ p.url | relative_url }}">Abstract</a>{% endif %}
+  {% if p.arxiv %}<a class="pub-entry__link" href="{{ p.arxiv }}">arXiv</a>{% endif %}
+  {% if p.journalurl %}<a class="pub-entry__link" href="{{ p.journalurl }}">Journal{% if p.open_access %} (open access){% endif %}</a>{% endif %}
+  {% if p.theme_url %}<a class="pub-entry__link" href="{{ p.theme_url | relative_url }}">{{ p.theme_label | default: "Research overview" }}</a>{% endif %}
+</div>

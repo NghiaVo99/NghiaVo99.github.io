@@ -1,0 +1,34 @@
+# Talks, newest first. "link" is optional.
+- year: 2026
+  when: "Nov 2026"
+  title: "A globally convergent Newton method for nonsmooth optimization in the absence of smooth surrogates"
+  venue: "SIAM DC–Maryland–Virginia Section Meeting, George Mason University"
+  link: /publication/2026-globally-convergent-newton-nonsmooth-optimization
+- year: 2026
+  when: "2026"
+  title: "Nonsmooth Newton methods with effective subspaces for polyhedral regularization"
+  venue: "Great Lakes SIAM Annual Meeting, Purdue University"
+  link: /publication/2025-nonsmooth-newton-effective-subspaces-polyhedral-regularization
+- year: 2026
+  when: "2026"
+  title: "Effective-subspace second-order methods for nonsmooth composite optimization with polyhedral regularizers"
+  venue: "28th Midwest Optimization Meeting, South Dakota State University"
+  link: /research/newton-methods/
+- year: 2026
+  when: "2026"
+  title: "Fast second-order methods in nonsmooth composite convex optimization with applications"
+  venue: "Graduate Student Research Conference, Oakland University"
+- year: 2026
+  when: "2026"
+  title: "An introduction to optimization for big data: data analysis and wrangling"
+  venue: "Data Analytics in Multi-Omics Science (DAMOS) Workshop, Oakland University"
+- year: 2025
+  when: "2025"
+  title: "Stability theory of regularized linear inverse problems through the lens of second-order variational analysis"
+  venue: "27th Midwest Optimization Meeting, University of North Dakota"
+  link: /research/#stability
+- year: 2025
+  when: "2025"
+  title: "Stable recovery of regularized linear inverse problems"
+  venue: "5th East Coast Optimization Meeting, George Mason University"
+  link: /publication/2025-stable-recovery-regularized-linear-inverse-problems

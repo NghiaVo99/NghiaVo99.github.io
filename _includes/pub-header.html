@@ -1,0 +1,6 @@
+{% assign p = page %}
+<div class="pub-header">
+  <p>{{ p.authors }}</p>
+  <p><i>{{ p.venue_line }}</i>{% if p.status %}<span class="pub-badge">{{ p.status }}</span>{% endif %}</p>
+  {% include pub-links.html pub=p %}
+</div>

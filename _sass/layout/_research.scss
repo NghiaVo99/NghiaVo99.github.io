@@ -1,0 +1,386 @@
+/* ==========================================================================
+   Research, publications, talks, and news components
+   ========================================================================== */
+
+/* ---- shared muted text color (readable in both themes) --------------------- */
+:root {
+  --research-muted-color: #5f666c;
+}
+
+html[data-theme="dark"] {
+  --research-muted-color: #b4b9be;
+}
+
+/* ---- figures with light / dark variants ---------------------------------- */
+.theme-figure {
+  margin: 1.5rem 0 1.75rem;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .theme-figure__dark {
+    display: none;
+  }
+
+  figcaption {
+    margin-top: 0.6rem;
+    color: var(--research-muted-color);
+    font-family: $sans-serif;
+    font-size: $type-size-6;
+    line-height: 1.5;
+  }
+}
+
+html[data-theme="dark"] .theme-figure {
+  .theme-figure__light {
+    display: none;
+  }
+
+  .theme-figure__dark {
+    display: block;
+  }
+}
+
+/* ---- research page ---------------------------------------------------------- */
+.research-intro {
+  max-width: 46rem;
+  font-size: $type-size-5;
+  line-height: 1.6;
+}
+
+.research-toc {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: 0.75rem;
+  margin: 1.5rem 0 0.5rem;
+  padding: 0;
+  list-style: none;
+
+  li {
+    margin: 0;
+  }
+
+  a {
+    display: block;
+    height: 100%;
+    padding: 0.8rem 0.95rem;
+    border: 1px solid var(--global-border-color);
+    border-radius: 8px;
+    background: var(--global-card-bg-color);
+    color: var(--global-text-color);
+    font-family: $sans-serif;
+    font-size: $type-size-6;
+    line-height: 1.4;
+    text-decoration: none;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+
+    &:hover {
+      border-color: var(--global-link-color);
+      background: var(--global-card-bg-color-hover);
+    }
+  }
+
+  .research-toc__num {
+    display: block;
+    margin-bottom: 0.2rem;
+    color: var(--global-link-color);
+    font-size: $type-size-7;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .research-toc__title {
+    font-weight: 700;
+  }
+}
+
+.research-theme {
+  margin-top: 3rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--global-border-color);
+
+  h2 {
+    margin-top: 0.2rem;
+    margin-bottom: 0.9rem;
+    font-size: $type-size-3;
+  }
+
+  p {
+    max-width: 46rem;
+    line-height: 1.65;
+  }
+}
+
+.research-theme__eyebrow {
+  margin: 0;
+  color: var(--global-link-color);
+  font-family: $sans-serif;
+  font-size: $type-size-7;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.research-theme__meta {
+  margin-top: 1.25rem;
+  padding: 0.9rem 1rem;
+  border-left: 3px solid var(--global-link-color);
+  border-radius: 0 8px 8px 0;
+  background: var(--global-card-bg-color-hover);
+  font-family: $sans-serif;
+  font-size: $type-size-6;
+  line-height: 1.5;
+
+  h3 {
+    margin: 0 0 0.4rem;
+    font-size: $type-size-6;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  ul {
+    margin: 0 0 0.6rem;
+    padding-left: 1.1rem;
+  }
+
+  li {
+    margin-bottom: 0.3rem;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+/* ---- publications list ------------------------------------------------------ */
+.pub-entry__title {
+  margin: 0 0 0.25rem;
+  font-family: $sans-serif;
+  font-size: $type-size-5;
+  font-weight: 700;
+  line-height: 1.35;
+
+  a {
+    color: var(--global-text-color);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--global-link-color);
+      text-decoration: underline;
+    }
+  }
+}
+
+.pub-entry__authors,
+.pub-entry__venue {
+  margin: 0;
+  font-size: $type-size-6;
+  line-height: 1.45;
+}
+
+.pub-entry__venue {
+  color: var(--research-muted-color);
+}
+
+.pub-entry__summary {
+  margin: 0.5rem 0 0;
+  font-size: $type-size-6;
+  line-height: 1.5;
+}
+
+.pub-badge {
+  display: inline-block;
+  margin-left: 0.35rem;
+  padding: 0.05rem 0.45rem;
+  border: 1px solid var(--global-link-color);
+  border-radius: 999px;
+  color: var(--global-link-color);
+  font-family: $sans-serif;
+  font-size: $type-size-7;
+  font-weight: 700;
+  line-height: 1.5;
+  vertical-align: 0.1em;
+  white-space: nowrap;
+}
+
+.pub-entry__link--primary {
+  padding: 0 0.5rem;
+  border-radius: 999px;
+  background: var(--global-link-color);
+  color: #fff !important;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+/* ---- single publication page header ---------------------------------------- */
+.pub-header {
+  margin: 0 0 1.5rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--global-border-color);
+  border-radius: 8px;
+  background: var(--global-card-bg-color);
+  font-family: $sans-serif;
+  font-size: $type-size-6;
+
+  p {
+    margin: 0 0 0.3rem;
+  }
+
+  .pub-entry__actions {
+    margin-top: 0.6rem;
+  }
+
+  .pub-entry__link {
+    font-size: 1em;
+  }
+}
+
+.pub-cite {
+  margin-top: 2.5rem;
+  font-size: $type-size-6;
+
+  pre {
+    font-size: $type-size-7;
+    white-space: pre-wrap;
+  }
+}
+
+.takeaways {
+  margin: 1.5rem 0;
+  padding: 1rem 1.1rem;
+  border-left: 3px solid var(--global-link-color);
+  border-radius: 0 8px 8px 0;
+  background: var(--global-card-bg-color-hover);
+
+  h3 {
+    margin-top: 0;
+    font-size: $type-size-5;
+  }
+
+  ul {
+    margin-bottom: 0;
+  }
+}
+
+/* ---- home page -------------------------------------------------------------- */
+.news-list {
+  margin: 0 0 1rem;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: grid;
+    grid-template-columns: 5.5rem 1fr;
+    gap: 0.75rem;
+    margin: 0;
+    padding: 0.55rem 0;
+    border-bottom: 1px solid var(--global-border-color);
+    font-size: $type-size-6;
+    line-height: 1.5;
+  }
+
+  .news-list__date {
+    color: var(--research-muted-color);
+    font-family: $sans-serif;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+}
+
+/* ---- talks ------------------------------------------------------------------ */
+.talk-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: grid;
+    grid-template-columns: 4rem 1fr;
+    gap: 0.9rem;
+    margin: 0;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid var(--global-border-color);
+  }
+
+  .talk-list__year {
+    color: var(--research-muted-color);
+    font-family: $sans-serif;
+    font-size: $type-size-6;
+    font-weight: 700;
+  }
+
+  .talk-list__title {
+    margin: 0;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+
+  .talk-list__venue {
+    margin: 0.15rem 0 0;
+    color: var(--research-muted-color);
+    font-size: $type-size-6;
+  }
+}
+
+@media (max-width: 30em) {
+  .news-list li,
+  .talk-list li {
+    grid-template-columns: 1fr;
+    gap: 0.1rem;
+  }
+}
+
+/* ---- figures reproduced from papers ----------------------------------------- */
+.paper-figure {
+  margin: 1.5rem 0 1.75rem;
+
+  .paper-figure__card {
+    padding: 0.75rem;
+    border: 1px solid var(--global-border-color);
+    border-radius: 8px;
+    background: #fff;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  figcaption {
+    margin-top: 0.6rem;
+    color: var(--research-muted-color);
+    font-family: $sans-serif;
+    font-size: $type-size-6;
+    line-height: 1.5;
+  }
+}
+
+.paper-figure--narrow .paper-figure__card {
+  max-width: 34rem;
+}
+
+.research-cta {
+  display: inline-block;
+  margin: 0.25rem 0 0.5rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  background: var(--global-link-color);
+  color: #fff !important;
+  font-family: $sans-serif;
+  font-size: $type-size-6;
+  font-weight: 700;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

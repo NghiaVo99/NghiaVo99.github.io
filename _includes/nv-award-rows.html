@@ -1,0 +1,11 @@
+<ul class="rows">
+  {% for a in include.items %}
+  <li>
+    <span class="rows__when">{{ a.year }}</span>
+    <div>
+      <p class="rows__what">{{ a.title }}</p>
+      <p class="rows__where">{{ a.org }}</p>
+    </div>
+  </li>
+  {% endfor %}
+</ul>

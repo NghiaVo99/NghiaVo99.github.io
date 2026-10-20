@@ -1,6 +1,7 @@
 ---
 title: "Double proximal point methods for difference-of-convex optimization methods"
 collection: publications
+published: false   # no longer listed on the CV
 category: hidden
 permalink: /publication/2026-double-proximal-point-methods-dc-optimization
 date: 2026-01-08

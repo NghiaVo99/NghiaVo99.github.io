@@ -1,49 +1,29 @@
-{% assign teaching_photo_count = 0 %}
-{% assign teaching_files = site.static_files | sort: "path" %}
-{% for file in teaching_files %}
-  {% if file.path contains '/images/teaching/' %}
-    {% assign ext = file.extname | downcase %}
-    {% if ext == '.jpg' or ext == '.jpeg' or ext == '.png' or ext == '.webp' %}
-      {% assign teaching_photo_count = teaching_photo_count | plus: 1 %}
-    {% endif %}
-  {% endif %}
-{% endfor %}
-
+{% assign photos = site.data.teaching_photos %}
+{% assign teaching_photo_count = photos.size %}
 {% if teaching_photo_count > 0 %}
-  <section class="teaching-moments" aria-label="Classroom photos">
-    <h2>Classroom Moments</h2>
+  <section class="teaching-moments" aria-labelledby="with-my-students" id="classroom-moments">
+    <h2 id="with-my-students">{{ include.title | default: "With my students" }}</h2>
     <div class="teaching-moments__grid">
-      {% assign teaching_photo_index = 0 %}
-      {% for file in teaching_files %}
-        {% if file.path contains '/images/teaching/' %}
-          {% assign ext = file.extname | downcase %}
-          {% if ext == '.jpg' or ext == '.jpeg' or ext == '.png' or ext == '.webp' %}
-            {% assign teaching_photo_index = teaching_photo_index | plus: 1 %}
-            {% assign photo_name = file.basename | replace: '-', ' ' | replace: '_', ' ' %}
-            <figure class="teaching-moments__item" style="--photo-index: {{ teaching_photo_index }}">
-              <a class="teaching-moments__thumb" href="#teaching-photo-{{ teaching_photo_index }}" aria-label="Open larger view of {{ photo_name | capitalize }}">
-                <img src="{{ file.path | relative_url }}" alt="{{ photo_name | capitalize }}" loading="lazy">
-              </a>
-            </figure>
-            <div class="teaching-lightbox" id="teaching-photo-{{ teaching_photo_index }}" aria-label="Larger classroom photo">
-              {% assign previous_photo_index = teaching_photo_index | minus: 1 %}
-              {% assign next_photo_index = teaching_photo_index | plus: 1 %}
-              {% if previous_photo_index < 1 %}
-                {% assign previous_photo_index = teaching_photo_count %}
-              {% endif %}
-              {% if next_photo_index > teaching_photo_count %}
-                {% assign next_photo_index = 1 %}
-              {% endif %}
-              <a class="teaching-lightbox__backdrop" href="#classroom-moments" aria-label="Close larger photo"></a>
-              <figure class="teaching-lightbox__figure">
-                <a class="teaching-lightbox__close" href="#classroom-moments" aria-label="Close larger photo">&times;</a>
-                <a class="teaching-lightbox__nav teaching-lightbox__nav--prev" href="#teaching-photo-{{ previous_photo_index }}" aria-label="Show previous photo">&#8249;</a>
-                <img src="{{ file.path | relative_url }}" alt="{{ photo_name | capitalize }}">
-                <a class="teaching-lightbox__nav teaching-lightbox__nav--next" href="#teaching-photo-{{ next_photo_index }}" aria-label="Show next photo">&#8250;</a>
-              </figure>
-            </div>
-          {% endif %}
-        {% endif %}
+      {% for photo in photos %}
+        {% assign i = forloop.index %}
+        {% assign prev_i = i | minus: 1 %}{% if prev_i < 1 %}{% assign prev_i = teaching_photo_count %}{% endif %}
+        {% assign next_i = i | plus: 1 %}{% if next_i > teaching_photo_count %}{% assign next_i = 1 %}{% endif %}
+        {% capture small %}{{ '/images/teaching/web/' | append: photo.name | append: '-800.jpg' | relative_url }}{% endcapture %}
+        {% capture large %}{{ '/images/teaching/web/' | append: photo.name | append: '-1800.jpg' | relative_url }}{% endcapture %}
+        <figure class="teaching-moments__item" style="--photo-index: {{ i }}">
+          <a class="teaching-moments__thumb" href="#teaching-photo-{{ i }}" aria-label="Open larger view: {{ photo.alt }}">
+            <img src="{{ small }}" alt="{{ photo.alt }}" width="800" height="600"{% if i > 8 %} loading="lazy"{% endif %}>
+          </a>
+        </figure>
+        <div class="teaching-lightbox" id="teaching-photo-{{ i }}" role="dialog" aria-label="{{ photo.alt }}">
+          <a class="teaching-lightbox__backdrop" href="#classroom-moments" aria-label="Close larger photo"></a>
+          <figure class="teaching-lightbox__figure">
+            <a class="teaching-lightbox__close" href="#classroom-moments" aria-label="Close larger photo">&times;</a>
+            <a class="teaching-lightbox__nav teaching-lightbox__nav--prev" href="#teaching-photo-{{ prev_i }}" aria-label="Show previous photo">&#8249;</a>
+            <img src="{{ large }}" alt="{{ photo.alt }}" loading="lazy">
+            <a class="teaching-lightbox__nav teaching-lightbox__nav--next" href="#teaching-photo-{{ next_i }}" aria-label="Show next photo">&#8250;</a>
+          </figure>
+        </div>
       {% endfor %}
     </div>
   </section>
@@ -53,19 +33,15 @@
         var match = window.location.hash.match(/^#teaching-photo-(\d+)$/);
         return match ? parseInt(match[1], 10) : null;
       }
-
       document.addEventListener('keydown', function (event) {
         var current = activePhotoIndex();
         if (!current) return;
-
         if (event.key === 'Escape') {
           event.preventDefault();
           window.location.hash = 'classroom-moments';
           return;
         }
-
         if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
-
         event.preventDefault();
         var total = {{ teaching_photo_count }};
         var next = event.key === 'ArrowRight' ? current + 1 : current - 1;

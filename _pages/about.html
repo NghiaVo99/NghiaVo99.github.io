@@ -1,0 +1,93 @@
+---
+layout: nv-base
+permalink: /
+title: "Nghia Van Vo"
+body_class: home
+redirect_from:
+  - /about/
+  - /about.html
+---
+{% assign pubs = site.publications | where_exp: "p", "p.cv_order" %}
+{% assign selected = pubs | where_exp: "p", "p.selected" | sort: "selected" %}
+<div class="wrap">
+
+<section class="hero" aria-labelledby="hero-name">
+  <div class="hero__text">
+    <h1 class="hero__name" id="hero-name">Nghia Van Vo</h1>
+    <p class="hero__role">Ph.D. student in Applied Mathematics, Oakland University<br>Advised by <a href="https://sites.google.com/site/ttanghia/home">Professor Tran T. A. Nghia</a></p>
+    <p class="hero__statement">I design fast Newton-type algorithms for nonsmooth optimization, and I study when solutions of regularized inverse problems can be trusted under noise. My tools come from variational analysis and generalized differentiation.</p>
+    <p class="hero__statement">I expect to complete my Ph.D. in May 2027 and am applying for tenure-track and postdoctoral positions in mathematics.</p>
+    <div class="btn-row">
+      <a class="btn btn--primary" href="{{ '/files/Nghia_Van_Vo_CV.pdf' | relative_url }}">Download CV</a>
+      <a class="btn" href="{{ site.author.googlescholar }}">Google Scholar</a>
+      <a class="btn" href="mailto:{{ site.author.email }}">{{ site.author.email }}</a>
+    </div>
+  </div>
+  <figure class="hero__photo">
+    <img src="{{ '/images/portrait.jpg' | relative_url }}" alt="Portrait of Nghia Van Vo" width="720" height="900">
+  </figure>
+</section>
+
+<section class="section" aria-labelledby="home-research">
+  <div class="section-head">
+    <h2 id="home-research">Research</h2>
+    <a href="{{ '/research/' | relative_url }}">Read the research overview</a>
+  </div>
+  <ul class="directions">
+    {% for d in site.data.directions %}
+    <li class="direction">
+      <a class="direction__figure" href="{{ '/research/' | relative_url }}#{{ d.id }}" tabindex="-1" aria-hidden="true"><img src="{{ '/images/research/' | append: d.thumb | relative_url }}" alt="" loading="lazy" width="640" height="480"></a>
+      <h3><a href="{{ '/research/' | relative_url }}#{{ d.id }}">{{ d.title }}</a></h3>
+      <p>{{ d.summary }}</p>
+      <p class="direction__meta">{{ d.papers }}</p>
+    </li>
+    {% endfor %}
+  </ul>
+  <p class="earlier-work">Before optimization, I worked on regularity theory for p-Laplace equations (<a href="{{ '/research/' | relative_url }}#pde">two papers, 2021 and 2022</a>).</p>
+</section>
+
+<div class="split section">
+  <section aria-labelledby="home-pubs">
+    <div class="section-head">
+      <h2 id="home-pubs">Selected publications</h2>
+      <a href="{{ '/publications/' | relative_url }}">All {{ pubs.size }} papers</a>
+    </div>
+    <ol class="pub-list">
+      {% for post in selected %}{% include nv-pub.html pub=post %}{% endfor %}
+    </ol>
+  </section>
+
+  <section aria-labelledby="home-news">
+    <div class="section-head">
+      <h2 id="home-news">News</h2>
+    </div>
+    <ul class="news">
+      <li><time datetime="2026-11">November 2026</time>Talk at the SIAM DC–Maryland–Virginia Section Meeting, George Mason University.</li>
+      <li><time datetime="2026-09">September 2026</time><a href="{{ '/publication/2025-nonsmooth-newton-effective-subspaces-polyhedral-regularization' | relative_url }}">Nonsmooth Newton methods with effective subspaces</a> accepted to <i>Mathematics of Operations Research</i>.</li>
+      <li><time datetime="2026-09">September 2026</time>New preprint on <a href="https://arxiv.org/abs/2609.06238">isolated calmness of regularized inverse problems</a>.</li>
+      <li><time datetime="2026-05">May 2026</time>New preprint on <a href="https://arxiv.org/abs/2605.20357">soft-label temperatures for knowledge distillation</a>.</li>
+      <li><time datetime="2026">2026</time>Awarded the McKay Outstanding Graduate Research Fellowship, Oakland University.</li>
+      <li><time datetime="2025-06">June 2025</time><a href="{{ '/publication/2025-stable-recovery-regularized-linear-inverse-problems' | relative_url }}">Stable recovery of regularized linear inverse problems</a> published in <i>Inverse Problems</i>.</li>
+    </ul>
+  </section>
+</div>
+
+<section class="section home-teaching" aria-labelledby="home-teaching">
+  <div class="section-head">
+    <h2 id="home-teaching">Teaching</h2>
+    <a href="{{ '/teaching/' | relative_url }}">Teaching and outreach</a>
+  </div>
+  <div class="home-teaching__body">
+    <div><p>I lead workshop sections of Elementary Algebra, Intermediate Algebra, and Precalculus at Oakland University, tutor at the Math Help Center, and have guest-taught in the graduate Nonlinear Optimization course. I have also taught in outreach programs for teachers in Vietnam and for middle school students in Detroit.</p>
+    <figure class="home-quote">
+      <blockquote><p>“The instructor explains the work and will keep asking if you understood it properly.”</p></blockquote>
+      <figcaption>Student, MTH 0661 (<a href="{{ '/teaching/' | relative_url }}#student-feedback">more student feedback</a>)</figcaption>
+    </figure></div>
+    <div class="home-teaching__photos">
+      {% assign tphotos = "IMG_1003,IMG_5066,IMG_5094" | split: "," %}
+      {% for f in tphotos %}<img src="{{ '/images/teaching/web/' | append: f | append: '-800.jpg' | relative_url }}" alt="" loading="lazy" width="800" height="600">{% endfor %}
+    </div>
+  </div>
+</section>
+
+</div>

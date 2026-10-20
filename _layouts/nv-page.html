@@ -1,0 +1,19 @@
+---
+layout: nv-base
+---
+<div class="wrap page-wrap{% if page.wide %} page-wrap--wide{% endif %}">
+  <div class="page-layout">
+    <header class="page-head">
+      {% if page.kicker_url %}<p class="page-head__back"><a href="{{ page.kicker_url | relative_url }}">{{ page.kicker }}</a></p>{% endif %}
+      <h1 class="page-head__title">{{ page.title }}</h1>
+      {% if page.lede %}<p class="page-head__lede">{{ page.lede }}</p>{% endif %}
+    </header>
+
+    {% include nv-rail.html %}
+
+    <div class="page-main page-body{% unless page.no_prose %} prose{% endunless %}">
+      {{ content }}
+    </div>
+  </div>
+</div>
+{% include nv-rail-script.html %}

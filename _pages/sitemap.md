@@ -1,37 +1,24 @@
 ---
-layout: archive
 title: "Sitemap"
 permalink: /sitemap/
-author_profile: true
+no_prose: true
 ---
-
-{% include base_path %}
-
-A list of all the posts and pages found on the site. For you robots out there, there is an [XML version]({{ base_path }}/sitemap.xml) available for digesting as well.
-
-<h2>Pages</h2>
-{% for post in site.pages %}
-  {% include archive-single.html %}
-{% endfor %}
-
-<h2>Posts</h2>
-{% for post in site.posts %}
-  {% include archive-single.html %}
-{% endfor %}
-
-{% capture written_label %}'None'{% endcapture %}
-
-{% for collection in site.collections %}
-{% unless collection.output == false or collection.label == "posts" %}
-  {% capture label %}{{ collection.label }}{% endcapture %}
-  {% if label != written_label %}
-  <h2>{{ label }}</h2>
-  {% capture written_label %}{{ label }}{% endcapture %}
-  {% endif %}
-{% endunless %}
-{% for post in collection.docs %}
-  {% unless collection.output == false or collection.label == "posts" %}
-  {% include archive-single.html %}
-  {% endunless %}
-{% endfor %}
-{% endfor %}
+<div class="prose">
+  <section class="cv-section">
+    <h2>Pages</h2>
+    <ul>
+      {% for link in site.data.navigation.main %}<li><a href="{{ link.url | relative_url }}">{{ link.title }}</a></li>{% endfor %}
+      <li><a href="{{ '/research/newton-methods/' | relative_url }}">Newton-type methods for nonsmooth optimization</a></li>
+      <li><a href="{{ '/awards/' | relative_url }}">Honors and awards</a></li>
+      <li><a href="{{ '/portfolio/' | relative_url }}">Computing projects</a></li>
+    </ul>
+  </section>
+  <section class="cv-section">
+    <h2>Papers</h2>
+    <ul>
+      {% assign pubs = site.publications | where_exp: "p", "p.cv_order" | sort: "cv_order" %}
+      {% for post in pubs %}<li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>{% endfor %}
+    </ul>
+  </section>
+  <p class="meta">An <a href="{{ '/sitemap.xml' | relative_url }}">XML sitemap</a> is also available.</p>
+</div>

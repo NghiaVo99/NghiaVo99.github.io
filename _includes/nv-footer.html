@@ -1,0 +1,28 @@
+<footer class="site-footer">
+  <div class="wrap site-footer__inner">
+    <div class="site-footer__col">
+      <p class="site-footer__name">Nghia Van Vo</p>
+      <p>Department of Mathematics and Statistics<br>Oakland University, Rochester, MI 48309</p>
+      <p><a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></p>
+    </div>
+    <div class="site-footer__col">
+      <p class="site-footer__label">Elsewhere</p>
+      <ul>
+        <li><a href="{{ site.author.googlescholar }}">Google Scholar</a></li>
+        <li><a href="https://github.com/{{ site.author.github }}">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/{{ site.author.linkedin }}">LinkedIn</a></li>
+      </ul>
+    </div>
+    <div class="site-footer__col">
+      <p class="site-footer__label">More on this site</p>
+      <ul>
+        <li><a href="{{ '/files/Nghia_Van_Vo_CV.pdf' | relative_url }}">CV (PDF)</a></li>
+        <li><a href="{{ '/awards/' | relative_url }}">Honors and awards</a></li>
+        <li><a href="{{ '/portfolio/' | relative_url }}">Computing projects</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap site-footer__base">
+    <p>Updated {{ site.time | date: "%B %Y" }}</p>
+  </div>
+</footer>

@@ -1,0 +1,19 @@
+---
+title: "Talks"
+permalink: /talks/
+no_prose: true
+lede: "Conference and workshop presentations."
+---
+<div class="prose">
+  <ul class="rows">
+    {% for t in site.data.talks %}
+    <li>
+      <span class="rows__when">{{ t.when }}</span>
+      <div>
+        <p class="rows__what">{% if t.link %}<a href="{{ t.link | relative_url }}">{{ t.title }}</a>{% else %}{{ t.title }}{% endif %}</p>
+        <p class="rows__where">{{ t.venue }}</p>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+</div>

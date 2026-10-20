@@ -1,0 +1,50 @@
+---
+layout: nv-base
+---
+<div class="wrap page-wrap">
+  <div class="page-layout">
+  <header class="page-head paper-head">
+    <p class="page-head__back"><a href="{{ '/publications/' | relative_url }}">Publications</a></p>
+    <h1 class="page-head__title paper-head__title">{{ page.title }}</h1>
+    <p class="paper-head__authors">{{ page.authors }}</p>
+    <p class="paper-head__venue">{{ page.venue_line }}</p>
+    <div class="paper-head__actions">
+      {% if page.arxiv %}<a class="btn btn--primary" href="{{ page.arxiv }}">Read on arXiv</a>{% endif %}
+      {% if page.journalurl %}<a class="btn{% unless page.arxiv %} btn--primary{% endunless %}" href="{{ page.journalurl }}">Journal version{% if page.open_access %} (open access){% endif %}</a>{% endif %}
+      {% if page.theme_url %}<a class="btn" href="{{ page.theme_url | relative_url }}">{{ page.theme_label | default: "Research context" }}</a>{% endif %}
+    </div>
+  </header>
+
+  {% include nv-rail.html %}
+
+  <div class="page-main page-body prose">
+    <h2>{{ page.body_heading | default: "Abstract" }}</h2>
+    {{ content }}
+
+    {% if page.citation %}
+    <h2>Cite</h2>
+    <p class="cite-text">{{ page.citation }}</p>
+    {% if page.bibtex %}
+    <div class="bibtex">
+      <button class="btn btn--small bibtex__copy" type="button" data-copy-target="bibtex-{{ page.slug | default: 'entry' }}">Copy BibTeX</button>
+      <pre id="bibtex-{{ page.slug | default: 'entry' }}"><code>{{ page.bibtex | strip | escape }}</code></pre>
+    </div>
+    <script>
+      (function () {
+        var b = document.querySelector('.bibtex__copy');
+        if (!b || !navigator.clipboard) return;
+        b.addEventListener('click', function () {
+          var t = document.getElementById(b.getAttribute('data-copy-target')).innerText;
+          navigator.clipboard.writeText(t).then(function () {
+            b.textContent = 'Copied';
+            setTimeout(function () { b.textContent = 'Copy BibTeX'; }, 1600);
+          });
+        });
+      })();
+    </script>
+    {% endif %}
+    {% endif %}
+  </div>
+</div>
+</div>
+{% include nv-rail-script.html %}

@@ -1,0 +1,10 @@
+{% assign p = include.pub %}
+<article class="pub-entry">
+  <p class="pub-entry__title">
+    <a href="{{ p.url | relative_url }}">{{ p.title }}</a>{% if p.status %}<span class="pub-badge">{{ p.status }}</span>{% endif %}
+  </p>
+  <p class="pub-entry__authors">{{ p.authors }}</p>
+  <p class="pub-entry__venue">{{ p.venue_line }}</p>
+  {% if include.summary and p.summary %}<p class="pub-entry__summary">{{ p.summary }}</p>{% endif %}
+  {% include pub-links.html pub=p show_details=true %}
+</article>

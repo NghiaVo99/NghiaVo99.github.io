@@ -1,0 +1,26 @@
+# Classroom photos for the Teaching page, in display order.
+# Web-sized copies live in images/teaching/web/ (NAME-800.jpg for the grid, NAME-1800.jpg for the enlarged view).
+- name: IMG_1003
+  alt: "Students working problems together at the whiteboard during a workshop"
+- name: IMG_5066
+  alt: "Group photo with a workshop class in front of the chalkboard"
+- name: IMG_5094
+  alt: "Group photo with students at the end of the semester"
+- name: IMG_1120
+  alt: "Group photo with students in a hallway at Oakland University"
+- name: IMG_0980
+  alt: "Students at the chalkboard during a workshop"
+- name: IMG_5083
+  alt: "Group photo with students in a lecture hall"
+- name: IMG_0656
+  alt: "Middle school students solving problems at the whiteboard"
+- name: IMG_1005
+  alt: "Students explaining their solutions at the whiteboard"
+- name: Damos_workshop1
+  alt: "Presenting at the DAMOS workshop, Oakland University"
+- name: Damos_workshop2
+  alt: "With colleagues after the DAMOS workshop"
+- name: IMG_0989
+  alt: "A workshop session with students working at the boards and tables"
+- name: IMG_5065
+  alt: "Students working in a lecture hall"

@@ -1,0 +1,22 @@
+# Research directions, used on the home page and the Research page.
+- id: newton
+  title: "Fast Newton-type methods for nonsmooth optimization"
+  short: "Newton-type methods"
+  summary: "Second-order algorithms that keep Newton's fast convergence when the objective has a nonsmooth regularizer, such as Lasso, total variation, or OSCAR."
+  thumb: "paper/dir-newton.webp"
+  thumb_alt: "Super-resolution reconstruction of fluorescent filaments computed with the effective-subspace Newton method."
+  papers: "4 papers, including Mathematics of Operations Research (to appear)"
+- id: stability
+  title: "Stability of regularized inverse problems"
+  short: "Stability of inverse problems"
+  summary: "When is a signal recovered from noisy measurements close to the truth? Exact second-order conditions for stable recovery and isolated calmness."
+  thumb: "paper/dir-stability.webp"
+  thumb_alt: "Plot of recovery rate versus number of measurements for recovered, sharp, and strong solutions."
+  papers: "3 papers, including Inverse Problems (2025)"
+- id: applications
+  title: "Nonconvex optimization in PDE control and machine learning"
+  short: "PDE control and machine learning"
+  summary: "Inexact DC algorithms in function spaces for sparse optimal control, and per-sample temperatures for knowledge distillation."
+  thumb: "paper/dir-applications.webp"
+  thumb_alt: "Surface plot of a sparse optimal control that is zero on a band of the domain."
+  papers: "2 papers, submitted"

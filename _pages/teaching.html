@@ -1,15 +1,77 @@
 ---
-layout: archive
 title: "Teaching"
 permalink: /teaching/
-author_profile: true
+no_prose: true
+wide: true
+lede: "My workshops are built on guided questioning: students develop their own solutions, often together at the board."
+toc:
+  - id: classroom-moments
+    title: "With my students"
+  - id: student-feedback
+    title: "What students say"
+  - id: oakland
+    title: "Oakland University"
+  - id: outreach
+    title: "Outreach and summer programs"
 ---
-
-{% include base_path %}
-
-<span id="classroom-moments"></span>
 {% include teaching-gallery.html %}
 
-{% for post in site.teaching reversed %}
-  {% include archive-single.html %}
-{% endfor %}
+{% assign fb = site.data.teaching_feedback %}
+<section class="feedback" id="student-feedback" aria-labelledby="student-feedback-title">
+  <h2 id="student-feedback-title">What students say</h2>
+  <p class="feedback__stat">On the department’s end-of-term questionnaires from my {{ fb.summary.terms }} workshops, {{ fb.summary.stat }}</p>
+  <ul class="quotes">
+    {% for q in fb.quotes %}
+    <li>
+      <figure class="quote">
+        <blockquote><p>“{{ q.text }}”</p></blockquote>
+        <figcaption>Student, {{ q.source }}</figcaption>
+      </figure>
+    </li>
+    {% endfor %}
+  </ul>
+  <p class="feedback__note"><span class="sans" style="font-weight:600;color:var(--ink)">Words students used most:</span></p>
+  <ul class="feedback__words" aria-label="Words students used most">
+    {% for w in fb.words %}<li>{{ w }}</li>{% endfor %}
+  </ul>
+  <p class="feedback__note">{{ fb.asked_for }}</p>
+  <p class="meta feedback__source">From {{ fb.summary.forms }} anonymous handwritten questionnaires; spelling lightly corrected.</p>
+</section>
+
+<div class="prose">
+  <p>At Oakland University I lead workshop sections of Elementary Algebra, Intermediate Algebra, and Precalculus (about 80 students), tutor at the Math Help Center, grade for engineering mathematics courses, and have guest-taught in the graduate Nonlinear Optimization course. Outside the university I have taught in two outreach programs: a train-the-trainer program that reached about 4,000 teachers in Vietnam, and a STEM academy for Detroit middle school students.</p>
+
+  <section class="cv-section" id="oakland">
+    <h2>Oakland University</h2>
+    {% assign ou = site.teaching | where: "group", "oakland" | sort: "date" | reverse %}
+    <ul class="rows">
+      {% for t in ou %}
+      <li>
+        <span class="rows__when">{% if t.terms %}{{ t.terms }}{% else %}{{ t.date | date: "%Y" }}{% endif %}</span>
+        <div>
+          <p class="rows__what">{{ t.title }}</p>
+          <p class="rows__where">{{ t.type }}</p>
+          <div class="rows__detail">{{ t.content | markdownify }}</div>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section class="cv-section" id="outreach">
+    <h2>Outreach and summer programs</h2>
+    {% assign outreach = site.teaching | where: "group", "outreach" | sort: "date" | reverse %}
+    <ul class="rows">
+      {% for t in outreach %}
+      <li>
+        <span class="rows__when">{{ t.date | date: "%Y" }}</span>
+        <div>
+          <p class="rows__what">{{ t.title }}</p>
+          <p class="rows__where">{{ t.type }}, {{ t.venue }}</p>
+          <div class="rows__detail">{{ t.content | markdownify }}</div>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+</div>

@@ -1,0 +1,17 @@
+{% comment %}One publication in a list. Params: pub, num (optional), summary=true (optional).{% endcomment %}
+{% assign p = include.pub %}
+<li class="pub{% unless include.num %} pub--plain{% endunless %}" data-theme-tag="{{ p.theme }}">
+  {% if include.num %}<span class="pub__num">[{{ include.num }}]</span>{% endif %}
+  <div>
+    <h3 class="pub__title"><a href="{{ p.url | relative_url }}">{{ p.title }}</a></h3>
+    <p class="pub__authors">{{ p.authors }}</p>
+    <p class="pub__venue">{{ p.venue_line }}</p>
+    {% if include.summary and p.summary %}<p class="pub__summary">{{ p.summary }}</p>{% endif %}
+    <ul class="pub__links">
+      <li><a href="{{ p.url | relative_url }}">{% if p.body_heading %}Details{% else %}Abstract{% endif %}</a></li>
+      {% if p.arxiv %}<li><a href="{{ p.arxiv }}">arXiv</a></li>{% endif %}
+      {% if p.journalurl %}<li><a href="{{ p.journalurl }}">Journal{% if p.open_access %} (open access){% endif %}</a></li>{% endif %}
+      {% if p.overview %}<li><a href="{{ '/research/newton-methods/' | relative_url }}">Illustrated overview</a></li>{% endif %}
+    </ul>
+  </div>
+</li>

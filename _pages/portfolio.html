@@ -1,14 +1,14 @@
 ---
-layout: archive
-title: "Projects"
+title: "Computing projects"
 permalink: /portfolio/
-author_profile: true
+no_prose: true
+lede: "Implementation and data projects alongside my research."
 ---
-
-{% include base_path %}
-
-
-{% for post in site.portfolio %}
-  {% include archive-single.html %}
-{% endfor %}
-
+<div class="prose">
+  {% for post in site.portfolio %}
+  <section class="cv-section">
+    <h2>{{ post.title }}</h2>
+    <div style="margin-top:0.9rem">{{ post.content }}</div>
+  </section>
+  {% endfor %}
+</div>
